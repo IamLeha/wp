@@ -1,0 +1,16 @@
+image: jimmyadaro/gitlab-ci-cd:latest
+
+before_script:
+  - mkdir -p ~/.ssh
+  - echo "$PRIVATE_KEY" > ~/.ssh/id_rsa
+  - chmod 700 ~/.ssh
+  - chmod 600 ~/.ssh/id_rsa
+  - eval $(ssh-agent -s)
+  - ssh-add ~/.ssh/id_rsa
+
+Deploy:
+  stage: deploy
+  only:
+    - master
+  script:
+    - ssh -o StrictHostKeyChecking=no -i ~/.ssh/id_rsa -p $SERVER_PORT $SERVER_USER@$SERVER_HOST "$COMMANDS"

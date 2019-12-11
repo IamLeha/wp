@@ -1,0 +1,43 @@
+@media screen and (max-width: $desktopWidth) {
+    html {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: $smDesktopWidth) {
+    .nav-burger {
+        display: block;
+    }
+
+    .nav-container {
+        position: absolute;
+        top: 0;
+        left: -400px;
+        background-color: $danger-color;
+        padding: 20px;
+        transition: 0.5s linear;
+        width: max-content;
+    }
+
+    .menu {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .checkbox3:checked~.nav-container {
+        left: 0;
+    }
+}
+
+@media screen and (max-width: $tableWidth) {
+    html {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: $phoneWidth) {
+    html {
+        font-size: 14px;
+    }
+}
+
